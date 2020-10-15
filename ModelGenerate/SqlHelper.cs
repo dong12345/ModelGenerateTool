@@ -121,7 +121,8 @@ namespace ModelGenerate
                     return "string";
 
                 case "36":
-                    return "uniqueidentifier";
+                    //return "uniqueidentifier";
+                    return "Guid";
 
                 case "48":
                     return "tinyint";
