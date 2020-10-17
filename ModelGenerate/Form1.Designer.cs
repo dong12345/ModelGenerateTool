@@ -297,7 +297,7 @@
             this.groupBox2.Size = new System.Drawing.Size(623, 502);
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "model模板";
+            this.groupBox2.Text = "生成model预览";
             // 
             // groupBox3
             // 
@@ -331,7 +331,6 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Model实体生成器";

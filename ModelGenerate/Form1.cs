@@ -25,19 +25,23 @@ namespace ModelGenerate
         /// <param name="e"></param>
         private async void bt_Gnerate_Click(object sender, EventArgs e)
         {
+            bt_Gnerate.Enabled = false;
             if (lb_Tables.Items.Count == 0)
             {
                 MessageBox.Show("请选择数据库");
+                bt_Gnerate.Enabled = true;
                 return;
             }
             else if (txt_Prefix.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("命名空间不能为空");
+                bt_Gnerate.Enabled = true;
                 return;
             }
             else if (txt_Place.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("文件存放位置不能为空");
+                bt_Gnerate.Enabled = true;
                 return;
             }
             else
@@ -58,11 +62,13 @@ namespace ModelGenerate
                     string value = dbTable.value;
                     if (key != "0" && key != "")
                     {
-                        await GenerateCS(value);
+                        await GenerateCS(value);                       
                     }
                     else
                     {
                         MessageBox.Show("请选择数据库！");
+                        bt_Gnerate.Enabled = true;
+                        return;
                     }
                 }
                 else
@@ -86,9 +92,12 @@ namespace ModelGenerate
                     else
                     {
                         MessageBox.Show("请选择数据库！");
+                        bt_Gnerate.Enabled = true;
+                        return;
                     }
                 }
                 WriteMessage("Model生成成功");
+                bt_Gnerate.Enabled = true;
             }
         }
 
@@ -99,19 +108,23 @@ namespace ModelGenerate
         /// <param name="e"></param>
         private void txt_Connect_Click(object sender, EventArgs e)
         {
+            txt_Connect.Enabled = false;
             if (txt_IP.Text.Trim() == "")
             {
                 MessageBox.Show("IP地址不能为空!");
+                txt_Connect.Enabled = true;
                 return;
             }
             if (txt_UserName.Text.Trim() == "")
             {
                 MessageBox.Show("登录名不能为空!");
+                txt_Connect.Enabled = true;
                 return;
             }
             if (txt_Pwd.Text.Trim() == "")
             {
                 MessageBox.Show("密码不能为空!");
+                txt_Connect.Enabled = true;
                 return;
             }
             WriteMessage("数据库连接中...");
@@ -126,6 +139,7 @@ namespace ModelGenerate
             ddl_DatabaseBox.DisplayMember = "Value";
             ddl_DatabaseBox.ValueMember = "Key";
             WriteMessage("数据库连接成功");
+            txt_Connect.Enabled = true;
         }
 
         /// <summary>
