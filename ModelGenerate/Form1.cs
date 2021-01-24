@@ -32,12 +32,12 @@ namespace ModelGenerate
                 bt_Gnerate.Enabled = true;
                 return;
             }
-            else if (txt_Prefix.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("命名空间不能为空");
-                bt_Gnerate.Enabled = true;
-                return;
-            }
+            //else if (txt_Prefix.Text.Trim() == string.Empty)
+            //{
+            //    MessageBox.Show("命名空间不能为空");
+            //    bt_Gnerate.Enabled = true;
+            //    return;
+            //}
             else if (txt_Place.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("文件存放位置不能为空");
