@@ -62,7 +62,7 @@ namespace ModelGenerate
                     string value = dbTable.value;
                     if (key != "0" && key != "")
                     {
-                        await GenerateCS(value);                       
+                        await GenerateCS(value);
                     }
                     else
                     {
@@ -127,19 +127,29 @@ namespace ModelGenerate
                 txt_Connect.Enabled = true;
                 return;
             }
-            WriteMessage("数据库连接中...");
-            string connection = $"Integrated Security=false;Data Source={txt_IP.Text.Trim()};User ID={txt_UserName.Text.Trim()};Password={txt_Pwd.Text.Trim()};Connect Timeout=30";
-            List<DbTable> allDataBaseName = SqlHelper.GetAllDataBaseName(connection);
-            allDataBaseName.Insert(0, new DbTable
+
+            try
             {
-                key = "0",
-                value = "-请选择数据库-"
-            });
-            ddl_DatabaseBox.DataSource = allDataBaseName;
-            ddl_DatabaseBox.DisplayMember = "Value";
-            ddl_DatabaseBox.ValueMember = "Key";
-            WriteMessage("数据库连接成功");
-            txt_Connect.Enabled = true;
+                WriteMessage("数据库连接中...");
+                string connection = $"Integrated Security=false;Data Source={txt_IP.Text.Trim()};User ID={txt_UserName.Text.Trim()};Password={txt_Pwd.Text.Trim()};Connect Timeout=30";
+                List<DbTable> allDataBaseName = SqlHelper.GetAllDataBaseName(connection);
+                allDataBaseName.Insert(0, new DbTable
+                {
+                    key = "0",
+                    value = "-请选择数据库-"
+                });
+                ddl_DatabaseBox.DataSource = allDataBaseName;
+                ddl_DatabaseBox.DisplayMember = "Value";
+                ddl_DatabaseBox.ValueMember = "Key";
+                WriteMessage("数据库连接成功");
+                txt_Connect.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                WriteMessage($"数据库连接失败:{ex.Message}");
+                txt_Connect.Enabled = true;
+            }
+
         }
 
         /// <summary>

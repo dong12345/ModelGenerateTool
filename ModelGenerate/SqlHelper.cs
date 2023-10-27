@@ -31,9 +31,10 @@ namespace ModelGenerate
                     dataReader.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new AggregateException("获得数据库连接居然不传数据库类型，你想上天吗？");
+                //throw new AggregateException("获得数据库连接居然不传数据库类型，你想上天吗？");
+                throw ex;
             }
             finally
             {
